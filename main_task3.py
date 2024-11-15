@@ -7,7 +7,6 @@ path = sys.argv[1]
 parent_folder_path = Path(path)
 
 
-#
 def parse_folder(path):
     # Перевірка, чи шлях існує та чи є це директорія
     if not path.exists() or not path.is_dir():
