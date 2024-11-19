@@ -1,11 +1,9 @@
 import pathlib
 
-doc_data_cats_path = pathlib.Path('./data_cats.txt')
-
 
 def get_cats_info(path):
     try:
-        with open(doc_data_cats_path, "r", encoding="utf-8") as file:
+        with open(path, "r", encoding="utf-8") as file:
             cats = list()
             list_dict_cats_info = list()
 
@@ -13,7 +11,7 @@ def get_cats_info(path):
                 cats.append(line.split(','))
             for cat in cats:
                 try:
-                    list_dict_cats_info.append({'id': cat[0], 'name': cat[1], 'age': int(cat[2])})
+                    list_dict_cats_info.append({'id': cat[0], 'name': cat[1], 'age': cat[2].rstrip('\n')})
                 except ValueError:
                     list_dict_cats_info.append({'id': cat[0], 'name': cat[1], 'age': None})
                     print('Invalid age!')
@@ -22,4 +20,4 @@ def get_cats_info(path):
         return f"{e}."
 
 
-print(get_cats_info(doc_data_cats_path))
+print(get_cats_info('./data_cats.txt'))
